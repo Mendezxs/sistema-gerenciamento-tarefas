@@ -1,0 +1,3 @@
+Tarefa 1: Estudar C - estudar estrutura de dados - Prioridade: Alta - Status: Pendente
+Tarefa 2: Atividade - Enviar atividade de AED - Prioridade: Alta - Status: Pendente
+Tarefa 3: Pagar - Pagar sal rio  - Prioridade: Baixa - Status: Pendente
