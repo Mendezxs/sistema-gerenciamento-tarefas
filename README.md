@@ -12,3 +12,4 @@ Com GCC (no Linux, Windows ou Mac):
 
 ```bash
 gcc Gerenciador.c -o tarefas
+tarefas.exe(no windows)
