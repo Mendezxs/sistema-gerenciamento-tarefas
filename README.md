@@ -3,7 +3,7 @@
 ## Sobre
 
 Este projeto é um sistema simples de gerenciamento de tarefas em linguagem C, 
-desenvolvido como atividade da disciplina de Algoritmos e Estruturas de Dados. 
+desenvolvido como atividade AED. 
 O sistema permite cadastrar, listar, editar, excluir e salvar tarefas em arquivo de texto.
 
 ## Como compilar
