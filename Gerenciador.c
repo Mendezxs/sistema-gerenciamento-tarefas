@@ -24,56 +24,50 @@ int main()
          CadastrarTarefa(tarefas, &quantidade);    
         }   
         if(opcao == 2)
+        {
+            ListarTarefa(tarefas, quantidade);
+        }
+        if(opcao == 3)
+        {
+            printf("Número da tarefa: ");
+            scanf("%d%*c", &indice);
+            if(indice >= 1 && indice <= quantidade)
             {
-                ListarTarefa(tarefas, quantidade);
+                EditarTarefa(tarefas, indice - 1);
             }
-            
-            if(opcao == 3)
+            else
             {
-                printf("Número da tarefa: ");
-                scanf("%d%*c", &indice);
-                if(indice >= 1 && indice <= quantidade)
-                {
-                    EditarTarefa(tarefas, indice - 1);
-                }
-                else
-                {
-                        printf("Tarefa não encontrada!!\n");            
-                }
-                if(opcao == 4)
-                {
-                    printf("Número da tarefa: ");
-                    scanf("%d%*c", &indice);
-                
-                    if(indice >= 1 && indice <= quantidade)
-                    {
-                        ExcluirTarefa(tarefas, &quantidade, indice - 1);
-                    }
-                    else
-                    {
-                            printf("Tarefa Inválida!!\n");
-                    }
-                }        
-                if(opcao == 5)
-                {
-                    SalvarTarefasEmArquivo(tarefas, quantidade);
-                    printf("Tarefa salva!!\n");
-                }
-                else
-                {
-                    if(opcao == 6)
-                    {
-                    break;
-                    }
-                    else
-                    {
-                        printf("Opção Inválida!!\n");
-                    }
-                }
+                printf("Tarefa não encontrada!!\n");            
             }
-                
-            
+        }
+        if(opcao == 4)
+        {
+            printf("Número da tarefa: ");
+            scanf("%d%*c", &indice);
         
+            if(indice >= 1 && indice <= quantidade)
+            {
+                ExcluirTarefa(tarefas, &quantidade, indice - 1);
+            }
+            else
+            {
+                printf("Tarefa Inválida!!\n");
+            }
+        }        
+        if(opcao == 5)
+        {
+            SalvarTarefasEmArquivo(tarefas, quantidade);
+            printf("Tarefa salva!!\n");
+        }
+        
+        if(opcao == 6)
+        {
+            break;
+        }
+        if(opcao < 1 || opcao > 6)
+        {
+            printf("Opção Inválida!!\n");
+        }
     }       
     return 0;
 }
@@ -136,7 +130,7 @@ void ExcluirTarefa(char Tarefas[][4][50], int *quantidade, int indice)
         strcpy(Tarefas[i][j], Tarefas[i+1][j]);
         }
     }
-    *quantidade--;
+    (*quantidade)--;
 }
 
 void SalvarTarefasEmArquivo(char Tarefas[][4][50],int quantidade)
