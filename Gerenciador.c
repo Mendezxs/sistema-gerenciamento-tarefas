@@ -57,11 +57,12 @@ int main()
         if(opcao == 5)
         {
             SalvarTarefasEmArquivo(tarefas, quantidade);
-            printf("Tarefa salva!!\n");
+            printf(" \n Tarefa salva!!\n");
         }
         
         if(opcao == 6)
         {
+            printf(" Saindo do programa....\n");
             break;
         }
         if(opcao < 1 || opcao > 6)
