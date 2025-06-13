@@ -11,4 +11,4 @@ O sistema permite cadastrar, listar, editar, excluir e salvar tarefas em arquivo
 Com GCC (no Linux, Windows ou Mac):
 
 ```bash
-gcc main.c -o tarefas
+gcc Gerenciador.c -o tarefas
