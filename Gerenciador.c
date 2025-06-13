@@ -17,13 +17,64 @@ int main()
     int quantidade = 0, opcao, indice;
     while(1)
     {
-         printf("\n 1. Cadastrar Tarefa\n 2. Listar Tarefas\n 3. Editar Tarefa\n 4. Excluir Tarefa\n 5. Salvar Tarefas em Arquivo\n 6. Sair\n Escolha: ");
+        printf("\n 1. Cadastrar Tarefa\n 2. Listar Tarefas\n 3. Editar Tarefa\n 4. Excluir Tarefa\n 5. Salvar Tarefas em Arquivo\n 6. Sair\n Escolha: ");
         scanf("%d%*c", &opcao); 
-    }
-    
-    
-    
-    
+        if(opcao == 1)
+        {
+         CadastrarTarefa(tarefas, &quantidade);    
+        }   
+        else
+        {
+            if(opcao == 2)
+            {
+                ListarTarefa(tarefas, quantidade);
+            }
+            else
+            {
+                if(opcao == 3)
+                {
+                    printf("Número da tarefa: ");
+                    scanf("%d%*c", &indice);
+                    if(indice >= 1 && indice <= quantidade)
+                    {
+                        EditarTarefa(tarefas, indice - 1);
+                    }
+                    else
+                    {
+                        printf("Tarefa não encontrada!!\n");            
+                    }
+                    if(opcao == 4)
+                    {
+                        printf("Número da tarefa: ");
+                        scanf("%d%*c", &indice);
+                        if(indice >= 1 && indice <= quantidade)
+                        {
+                            ExcluirTarefa(tarefas, &quantidade, indice - 1);
+                        }
+                        else
+                        {
+                            printf("Tarefa Inválida!!\n");
+                        }
+                        if(opcao == 5)
+                        {
+                            SalvarTarefasEmArquivo(tarefas, quantidade);
+                        }
+                        else
+                        {
+                            if(opcao == 6)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                printf("Opção Inválida!!\n");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }       
     return 0;
 }
 
@@ -74,4 +125,27 @@ void EditarTarefa(char Tarefas[][4][50], int indice)
     printf("Novo status: ");
     fgets(Tarefas[indice][3], 50, stdin);
     Tarefas[indice][3][strcspn(Tarefas[indice][3], "\n")] = 0;
+}
+
+void ExcluirTarefa(char Tarefas[][4][50], int *quantidade, int indice)
+{
+    for(int i = indice; i < *quantidade - 1; i++) 
+    {
+        for(int j = 0; j < 4; j++) 
+        {
+        strcpy(Tarefas[i][j], Tarefas[i+1][j]);
+        }
+    }
+    *quantidade--;
+}
+
+void SalvarTarefasEmArquivo(char Tarefas[][4][50],int quantidade)
+{
+    FILE *f = fopen("tarefas.txt", "w");
+    for(int i = 0; i < quantidade; i++) 
+    {
+        fprintf(f, "Tarefa %d: %s - %s - Prioridade: %s - Status: %s\n",
+        i+1, Tarefas[i][0], Tarefas[i][1], Tarefas[i][2], Tarefas[i][3]);
+    }
+    fclose(f);
 }
