@@ -23,57 +23,57 @@ int main()
         {
          CadastrarTarefa(tarefas, &quantidade);    
         }   
-        else
-        {
-            if(opcao == 2)
+        if(opcao == 2)
             {
                 ListarTarefa(tarefas, quantidade);
             }
-            else
+            
+            if(opcao == 3)
             {
-                if(opcao == 3)
+                printf("Número da tarefa: ");
+                scanf("%d%*c", &indice);
+                if(indice >= 1 && indice <= quantidade)
+                {
+                    EditarTarefa(tarefas, indice - 1);
+                }
+                else
+                {
+                        printf("Tarefa não encontrada!!\n");            
+                }
+                if(opcao == 4)
                 {
                     printf("Número da tarefa: ");
                     scanf("%d%*c", &indice);
+                
                     if(indice >= 1 && indice <= quantidade)
                     {
-                        EditarTarefa(tarefas, indice - 1);
+                        ExcluirTarefa(tarefas, &quantidade, indice - 1);
                     }
                     else
                     {
-                        printf("Tarefa não encontrada!!\n");            
-                    }
-                    if(opcao == 4)
-                    {
-                        printf("Número da tarefa: ");
-                        scanf("%d%*c", &indice);
-                        if(indice >= 1 && indice <= quantidade)
-                        {
-                            ExcluirTarefa(tarefas, &quantidade, indice - 1);
-                        }
-                        else
-                        {
                             printf("Tarefa Inválida!!\n");
-                        }
-                        if(opcao == 5)
-                        {
-                            SalvarTarefasEmArquivo(tarefas, quantidade);
-                        }
-                        else
-                        {
-                            if(opcao == 6)
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                printf("Opção Inválida!!\n");
-                            }
-                        }
+                    }
+                }        
+                if(opcao == 5)
+                {
+                    SalvarTarefasEmArquivo(tarefas, quantidade);
+                    printf("Tarefa salva!!\n");
+                }
+                else
+                {
+                    if(opcao == 6)
+                    {
+                    break;
+                    }
+                    else
+                    {
+                        printf("Opção Inválida!!\n");
                     }
                 }
             }
-        }
+                
+            
+        
     }       
     return 0;
 }
